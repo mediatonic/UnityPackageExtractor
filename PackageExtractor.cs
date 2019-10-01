@@ -23,6 +23,7 @@ namespace Mediatonic.Tools
 
 		private void Awake()
 		{
+			// Get canonical path to avoid showing relative paths in window
 			_outputPath = Path.GetFullPath(_defaultOutputPath);
 			_packagePath = Path.GetFullPath(_defaultPackagePath);
 		}
@@ -57,6 +58,7 @@ namespace Mediatonic.Tools
 				}
 				finally
 				{
+					// If any I/O etc fails ensure the progress bar is still cleaned up
 					EditorUtility.ClearProgressBar();
 				}
 			}
@@ -64,7 +66,19 @@ namespace Mediatonic.Tools
 
 		public static void ExtractPackage(string packagePath, string outPath = null)
 		{
+			outPath = GetFullOutPath(packagePath, outPath);
+
+			string workingDir = ExtractToWorkingDirectory(packagePath, outPath);
+
+			FixFolderStructure(outPath, workingDir);
+
+			CleanUp(workingDir);
+		}
+
+		private static string GetFullOutPath(string packagePath, string outPath)
+		{
 			string name = Path.GetFileNameWithoutExtension(packagePath);
+
 			if (string.IsNullOrEmpty(outPath))
 			{
 				outPath = Application.dataPath;
@@ -76,6 +90,12 @@ namespace Mediatonic.Tools
 				throw new Exception($"Output path {outPath} already exists");
 			}
 
+			return outPath;
+		}
+
+		// Extract the archive using the archive's folder structure (one directory per-asset with meta data indicating where the asset should finally live)
+		private static string ExtractToWorkingDirectory(string packagePath, string outPath)
+		{
 			string workingDir = Path.Combine(outPath, ".working");
 
 			if (Directory.Exists(workingDir))
@@ -92,7 +112,12 @@ namespace Mediatonic.Tools
 			tarArchive.Close();
 			gzipStream.Close();
 			inStream.Close();
+			return workingDir;
+		}
 
+		// iterate over the individual assets' directories and move them to their target location from the "pathname" file
+		private static void FixFolderStructure(string outPath, string workingDir)
+		{
 			var dirs = Directory.GetDirectories(workingDir);
 			for (int i = 0; i < dirs.Length; ++i)
 			{
@@ -115,9 +140,12 @@ namespace Mediatonic.Tools
 				}
 				File.Move(assetPath, assetTargetPath);
 			}
-
-			Directory.Delete(workingDir, true);
 		}
 
+		// Delete the working directory when we're done
+		private static void CleanUp(string workingDir)
+		{
+			Directory.Delete(workingDir, true);
+		}
 	}
 }
