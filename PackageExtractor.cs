@@ -115,7 +115,7 @@ namespace Mediatonic.Tools
 			return workingDir;
 		}
 
-		// iterate over the individual assets' directories and move them to their target location from the "pathname" file
+		// Iterate over the individual assets' directories and move them to their target location from the "pathname" file
 		private static void FixFolderStructure(string outPath, string workingDir)
 		{
 			var dirs = Directory.GetDirectories(workingDir);
@@ -131,7 +131,12 @@ namespace Mediatonic.Tools
 					continue;
 				}
 
-				string assetTargetPathRelative = File.ReadAllText(pathnamePath);
+				string assetTargetPathRelative;
+				// Some packages have a second line containing a GUID, so just grab the path from the first line
+				using (var pathnameFile = new StreamReader(pathnamePath))
+				{
+					assetTargetPathRelative = pathnameFile.ReadLine();
+				}
 				string assetTargetPath = Path.Combine(outPath, assetTargetPathRelative);
 				string assetTargetPathDir = Path.GetDirectoryName(assetTargetPath);
 				if (!Directory.Exists(assetTargetPathDir))
