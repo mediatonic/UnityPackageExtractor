@@ -16,12 +16,11 @@ Drop `PackageExtractor.cs` into an editor folder in your project along with `ICS
 
 Add the following to the manifest
 
-    ```
 	"dependencies": {
 	"uk.co.mediatonic.unity-package-extractor": "https://github.com/hannesdelbeke/UnityPackageExtractor.git",
 	...
 	}
-	```
+	
 
 ### using UPM (GUI)
 
