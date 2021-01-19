@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "displayName": "Unity Package Extractor",
   "description": "tool to extract Unity Asset packages.",
-  "unity": "2018.0",
+  "unity": "2018.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/mediatonic/UnityPackageExtractor"
