@@ -8,15 +8,28 @@ Tested with Unity 2019.2.1f1
 
 ## Installation
 
+### Manual
+
 Drop `PackageExtractor.cs` into an editor folder in your project along with `ICSharpCode.SharpZipLib.dll`
 
+### Using UPM
+
+#### manually edit the maifest
+
 Or install using unity packagemanager by adding the following to the manifest
+
     `"uk.co.mediatonic.unity-package-extractor": "https://github.com/hannesdelbeke/UnityPackageExtractor.git",`
-	
+
+#### using the UPM GUI	
+
 Or through the package manager
+
 in the menu window/packagemanager
+
 click + in left top corner
+
 add package from git URL
+
 enter the giturl of this project
 
 
