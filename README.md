@@ -14,10 +14,10 @@ Drop `PackageExtractor.cs` into an editor folder in your project along with `ICS
 
 ### Using UPM (manifest)
 
-Add the following to the manifest
+Add the following to the manifest (replace gitURL with the URL of the current git repo in case of a forked project)
 
 	"dependencies": {
-	"uk.co.mediatonic.unity-package-extractor": "https://github.com/hannesdelbeke/UnityPackageExtractor.git",
+	"uk.co.mediatonic.unity-package-extractor": "https://github.com/mediatonic/UnityPackageExtractor.git",
 	...
 	}
 	
