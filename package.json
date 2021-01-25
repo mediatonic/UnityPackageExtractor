@@ -1,6 +1,6 @@
 {
   "name": "uk.co.mediatonic.unity-package-extractor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "Unity Package Extractor",
   "description": "tool to extract Unity Asset packages.",
   "unity": "2018.1",
