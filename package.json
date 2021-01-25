@@ -10,11 +10,12 @@
   },
   "license": "MIT License",
   "author": {
-    "name": "Stephen Taylor",
+    "name": "Code: Stephen Taylor, Packaging: Hannes Delbeke)",
     "url": "http://www.makegames.co.uk"
   },
-  "keywords": [],
-  "dependencies": {
+  "keywords": ["unity", "package", "extractor"],
+  "dependencies": {  
+    "com.unity.sharp-zip-lib": "1.2.2-preview.1"
   },
   "publishConfig": {
   },
