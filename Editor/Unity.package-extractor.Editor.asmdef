@@ -1,10 +1,11 @@
 {
-    "name": "PackageExtractor",
-    "references": [],
-    "includePlatforms": [],
-    "excludePlatforms": [
+    "name": "Unity.package-extractor.Editor",
+    "references": [
+    ],
+    "includePlatforms": [
         "Editor"
     ],
+    "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
