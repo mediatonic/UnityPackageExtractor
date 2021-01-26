@@ -1,6 +1,6 @@
 {
   "name": "uk.co.mediatonic.unity-package-extractor",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "displayName": "Unity Package Extractor",
   "description": "tool to extract Unity Asset packages.",
   "unity": "2018.1",
@@ -10,13 +10,17 @@
   },
   "license": "MIT License",
   "author": {
-    "name": "Stephen Taylor",
+    "name": "Code: Stephen Taylor, Packaging: Hannes Delbeke)",
     "url": "http://www.makegames.co.uk"
   },
-  "keywords": [],
+  "keywords": [
+    "unity",
+    "package",
+    "extractor"
+  ],
   "dependencies": {
+    "com.unity.sharp-zip-lib": "1.2.2-preview.1"
   },
-  "publishConfig": {
-  },
+  "publishConfig": {},
   "type": "tool"
 }
